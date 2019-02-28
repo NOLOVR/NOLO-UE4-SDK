@@ -1,0 +1,14 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-SnapdragonVRHMD-5442.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"D:\Program Files\Epic Games\UE_4.19\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h.obj"
+"D:\Workspaces\UE4\TEST419\Plugins\SnapdragonVR\SnapdragonVRHMD\Intermediate\Build\Win64\UE4Editor\Development\SnapdragonVRHMD\Module.SnapdragonVRHMD.cpp.obj"
+"D:\Workspaces\UE4\TEST419\Plugins\SnapdragonVR\SnapdragonVRHMD\Intermediate\Build\Win64\UE4Editor\Development\SnapdragonVRHMD\Module.SnapdragonVRHMD.gen.cpp.obj"
+"D:\Program Files\Epic Games\UE_4.19\Engine\Intermediate\Build\Win64\UE4Editor\Development\SnapdragonVRHMD\PCLaunch.rc.res"
+"D:\Program Files\Epic Games\UE_4.19\Engine\Intermediate\Build\Win64\UE4Editor\Development\ModuleVersionResource.rc.inl.res"
+/OUT:"D:\Workspaces\UE4\TEST419\Plugins\SnapdragonVR\SnapdragonVRHMD\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-SnapdragonVRHMD-5442.lib"
