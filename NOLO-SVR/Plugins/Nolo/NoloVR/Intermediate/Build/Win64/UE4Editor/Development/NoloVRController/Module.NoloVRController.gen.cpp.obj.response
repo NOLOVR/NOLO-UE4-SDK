@@ -23,11 +23,11 @@
 /wd4838
 /w44668
 /I "D:\Program Files\Epic Games\UE_4.19\Engine\Source"
-/I D:\Workspaces\UE4\SVR_NOLOVR\Test\TEST419V2\Plugins\Nolo\NoloVR\Source\NoloVRController\Private
-/I D:\Workspaces\UE4\SVR_NOLOVR\Test\TEST419V2\Plugins\Nolo\NoloVR\Source
-/I D:\Workspaces\UE4\SVR_NOLOVR\Test\TEST419V2\Plugins\Nolo\NoloVR\Source\NoloVRController\Public
-/I D:\Workspaces\UE4\SVR_NOLOVR\Test\TEST419V2\Plugins\Nolo\NoloVR\Intermediate\Build\Win64\UE4Editor\Inc\NoloVRController
-/I D:\Workspaces\UE4\SVR_NOLOVR\Test\TEST419V2\Plugins\Nolo\NoloVR\Source\NoloVRController
+/I D:\Workspaces\UE4\SVR_NOLOVR\NVR_Demo\Plugins\Nolo\NoloVR\Source\NoloVRController\Private
+/I D:\Workspaces\UE4\SVR_NOLOVR\NVR_Demo\Plugins\Nolo\NoloVR\Source
+/I D:\Workspaces\UE4\SVR_NOLOVR\NVR_Demo\Plugins\Nolo\NoloVR\Source\NoloVRController\Public
+/I D:\Workspaces\UE4\SVR_NOLOVR\NVR_Demo\Plugins\Nolo\NoloVR\Intermediate\Build\Win64\UE4Editor\Inc\NoloVRController
+/I D:\Workspaces\UE4\SVR_NOLOVR\NVR_Demo\Plugins\Nolo\NoloVR\Source\NoloVRController
 /I "D:\Program Files\Epic Games\UE_4.19\Engine\Source\Runtime\Core\Public"
 /I "D:\Program Files\Epic Games\UE_4.19\Engine\Source\Runtime\Core\Public\Internationalization"
 /I "D:\Program Files\Epic Games\UE_4.19\Engine\Source\Runtime\Core\Public\Async"
@@ -364,18 +364,18 @@
 /I "D:\Program Files\Epic Games\UE_4.19\Engine\Source\Runtime\AudioMixer"
 /I "D:\Program Files\Epic Games\UE_4.19\Engine\Source\Runtime\InputDevice\Public"
 /I "D:\Program Files\Epic Games\UE_4.19\Engine\Source\Runtime\InputDevice"
-/I D:\Workspaces\UE4\SVR_NOLOVR\Test\TEST419V2\Plugins\Nolo\NoloVR\Source\NoloVR\Classes
-/I D:\Workspaces\UE4\SVR_NOLOVR\Test\TEST419V2\Plugins\Nolo\NoloVR\Source\NoloVR\Public
-/I D:\Workspaces\UE4\SVR_NOLOVR\Test\TEST419V2\Plugins\Nolo\NoloVR\Intermediate\Build\Win64\UE4Editor\Inc\NoloVR
-/I D:\Workspaces\UE4\SVR_NOLOVR\Test\TEST419V2\Plugins\Nolo\NoloVR\Source\NoloVR
-/I D:\Workspaces\UE4\SVR_NOLOVR\Test\TEST419V2\Plugins\Nolo\NoloVR\Source\ThirdParty\NOLOLibrary\include
-/I D:\Workspaces\UE4\SVR_NOLOVR\Test\TEST419V2\Plugins\Nolo\NoloVR\Source\ThirdParty\NOLOLibrary
+/I D:\Workspaces\UE4\SVR_NOLOVR\NVR_Demo\Plugins\Nolo\NoloVR\Source\NoloVR\Classes
+/I D:\Workspaces\UE4\SVR_NOLOVR\NVR_Demo\Plugins\Nolo\NoloVR\Source\NoloVR\Public
+/I D:\Workspaces\UE4\SVR_NOLOVR\NVR_Demo\Plugins\Nolo\NoloVR\Intermediate\Build\Win64\UE4Editor\Inc\NoloVR
+/I D:\Workspaces\UE4\SVR_NOLOVR\NVR_Demo\Plugins\Nolo\NoloVR\Source\NoloVR
+/I D:\Workspaces\UE4\SVR_NOLOVR\NVR_Demo\Plugins\Nolo\NoloVR\Source\ThirdParty\NOLOLibrary\include
+/I D:\Workspaces\UE4\SVR_NOLOVR\NVR_Demo\Plugins\Nolo\NoloVR\Source\ThirdParty\NOLOLibrary
 /FI"D:\Program Files\Epic Games\UE_4.19\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h"
 /Yu"D:\Program Files\Epic Games\UE_4.19\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h"
 /Fp"D:\Program Files\Epic Games\UE_4.19\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h.pch"
-"D:\Workspaces\UE4\SVR_NOLOVR\Test\TEST419V2\Plugins\Nolo\NoloVR\Intermediate\Build\Win64\UE4Editor\Development\NoloVRController\Module.NoloVRController.gen.cpp"
-/FI"D:\Workspaces\UE4\SVR_NOLOVR\Test\TEST419V2\Plugins\Nolo\NoloVR\Intermediate\Build\Win64\UE4Editor\Development\NoloVRController\Definitions.NoloVRController.h"
-/Fo"D:\Workspaces\UE4\SVR_NOLOVR\Test\TEST419V2\Plugins\Nolo\NoloVR\Intermediate\Build\Win64\UE4Editor\Development\NoloVRController\Module.NoloVRController.gen.cpp.obj"
+"D:\Workspaces\UE4\SVR_NOLOVR\NVR_Demo\Plugins\Nolo\NoloVR\Intermediate\Build\Win64\UE4Editor\Development\NoloVRController\Module.NoloVRController.gen.cpp"
+/FI"D:\Workspaces\UE4\SVR_NOLOVR\NVR_Demo\Plugins\Nolo\NoloVR\Intermediate\Build\Win64\UE4Editor\Development\NoloVRController\Definitions.NoloVRController.h"
+/Fo"D:\Workspaces\UE4\SVR_NOLOVR\NVR_Demo\Plugins\Nolo\NoloVR\Intermediate\Build\Win64\UE4Editor\Development\NoloVRController\Module.NoloVRController.gen.cpp.obj"
 /TP
 /GR-
 /W4

@@ -49,6 +49,15 @@
       <addPermission android:name="android.permission.WRITE_APN_SETTINGS"/>
       <addPermission android:name="com.android.launcher.permission.WRITE_SETTINGS"/>
       <addPermission android:name="android.permission.ACCESS_SERVER"/>
+    <addElements tag="application">
+      <meta-data android:name="com.samsung.android.vr.application.mode" android:value="vr_only"/>
+      <meta-data
+          android:name="distribute"
+          android:value="normal" />
+      <meta-data
+          android:name="com.nolovr.client.vr.appType"
+          android:value="3D" />
+    </addElements>
   </androidManifestUpdates>
 
 

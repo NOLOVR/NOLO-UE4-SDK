@@ -111,6 +111,21 @@ extern "C" {
 
 	void reportError(const char* data);
 
+	/**
+	******************************************************************************
+	* Function description£º
+	* Parameter£º
+	******************************************************************************
+	*/
+	bool isInstallNoloHome();
+	/**
+	******************************************************************************
+	* Function description£º
+	* Parameter£º
+	******************************************************************************
+	*/
+	bool isStartUpNoloHome();
+
 #ifdef __cplusplus
 }
 #endif
@@ -186,6 +201,25 @@ namespace nolovr {
 #else
 #endif 
 		}
+
+		bool IsInstallNoloHome() {
+#ifdef __ANDROID__
+			return isInstallNoloHome();
+#else
+			return true;
+#endif 
+			
+		}
+
+		bool IsStartUpNolohome() {
+#ifdef __ANDROID__
+			return isInstallNoloHome();
+#else
+			return true;
+#endif 
+		}
+
+
 	};
 }
 

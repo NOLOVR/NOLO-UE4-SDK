@@ -38,6 +38,10 @@ public:
 	void SetAppKey(FString data)const;
 
 	void ReportError(FString errorMsg)const;
+
+	bool IsInstallNoloHome()const;
+
+	bool IsStartUpNoloHome()const;
 public:
 	NOLOVR_API bool TriggerHapticPulse(EControllerHand Hand, int intensity);
 

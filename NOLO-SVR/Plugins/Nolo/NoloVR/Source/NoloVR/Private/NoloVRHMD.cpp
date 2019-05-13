@@ -49,6 +49,18 @@ void FNoloVRHMD::ReportError(FString errorMsg) const
 {
 	noloVrApi.get()->ReportError(TCHAR_TO_ANSI(*errorMsg));
 }
+
+bool FNoloVRHMD::IsInstallNoloHome()const {
+	UE_LOG(LogTemp, Log, TEXT("===========IsInstallNoloHome==============\n"));
+	return noloVrApi.get()->IsInstallNoloHome();
+}
+
+bool FNoloVRHMD::IsStartUpNoloHome()const {
+	bool flag = noloVrApi.get()->IsStartUpNolohome();
+	UE_LOG(LogTemp, Log, TEXT("===========IsStartUpNoloHome============== %d \n"), flag);
+	return noloVrApi.get()->IsStartUpNolohome();
+}
+
 void FNoloVRHMD::SetHmdDeviceType(const EMobileVR_HMDDeviceType DeviceType) const
 {
 	if (DeviceType == EMobileVR_HMDDeviceType::DT_GoogleVR_Cardboard) {

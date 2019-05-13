@@ -99,6 +99,22 @@ void UNOLOVRBlueprintFunctionLibrary::ReportError(FString errorMsg)
 	}
 }
 
+bool UNOLOVRBlueprintFunctionLibrary::IsInstallNoloHome() {
+	FNoloVRHMD *noloVR = GetNoloVRHMD();
+	if (noloVR != nullptr) {
+		return noloVR->IsInstallNoloHome();
+	}
+	return false;
+}
+
+ bool UNOLOVRBlueprintFunctionLibrary::IsStartUpNoloHome(){
+	 FNoloVRHMD *noloVR = GetNoloVRHMD();
+	 if (noloVR != nullptr) {
+		 return noloVR->IsStartUpNoloHome();
+	 }
+	 return false;
+ }
+
 //bool UNOLOVRBlueprintFunctionLibrary::SetTriggerHapticPulse(const EControllerHand DeviceHand, int intensity)
 //{
 //	FNoloVRHMD *noloVR = GetNoloVRHMD();

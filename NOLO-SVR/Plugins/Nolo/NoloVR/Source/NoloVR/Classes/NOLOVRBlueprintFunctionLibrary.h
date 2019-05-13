@@ -97,5 +97,15 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "NOLO VR")
 		static void ReportError(FString errorMsg);
 
+	///**
+	//*
+	//*/
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "NOLO VR")
+		static bool IsInstallNoloHome();
 
+	///**
+	//*
+	//*/
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "NOLO VR")
+		static bool IsStartUpNoloHome();
 };

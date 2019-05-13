@@ -19,8 +19,8 @@ void EmptyLinkFunctionForGeneratedCodeNoloVR_init() {}
 			static const UE4CodeGen_Private::FPackageParams PackageParams = {
 				"/Script/NoloVR",
 				PKG_CompiledIn | 0x00000000,
-				0x94A5305C,
-				0x50A9380B,
+				0x09F9220A,
+				0x48238E93,
 				nullptr, 0,
 				METADATA_PARAMS(nullptr, 0)
 			};

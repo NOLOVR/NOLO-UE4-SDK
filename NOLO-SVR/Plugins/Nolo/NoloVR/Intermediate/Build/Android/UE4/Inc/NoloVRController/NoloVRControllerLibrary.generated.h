@@ -14,7 +14,7 @@ enum class ENoloVRTouchDPadMapping : uint8;
 #endif
 #define NOLOVRCONTROLLER_NoloVRControllerLibrary_generated_h
 
-#define TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_RPC_WRAPPERS \
+#define NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_RPC_WRAPPERS \
  \
 	DECLARE_FUNCTION(execSetTouchDPadMapping) \
 	{ \
@@ -26,7 +26,7 @@ enum class ENoloVRTouchDPadMapping : uint8;
 	}
 
 
-#define TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_RPC_WRAPPERS_NO_PURE_DECLS \
+#define NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_RPC_WRAPPERS_NO_PURE_DECLS \
  \
 	DECLARE_FUNCTION(execSetTouchDPadMapping) \
 	{ \
@@ -38,7 +38,7 @@ enum class ENoloVRTouchDPadMapping : uint8;
 	}
 
 
-#define TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_INCLASS_NO_PURE_DECLS \
+#define NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUNoloVRControllerLibrary(); \
 	friend NOLOVRCONTROLLER_API class UClass* Z_Construct_UClass_UNoloVRControllerLibrary(); \
@@ -48,7 +48,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_INCLASS \
+#define NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_INCLASS \
 private: \
 	static void StaticRegisterNativesUNoloVRControllerLibrary(); \
 	friend NOLOVRCONTROLLER_API class UClass* Z_Construct_UClass_UNoloVRControllerLibrary(); \
@@ -58,7 +58,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_STANDARD_CONSTRUCTORS \
+#define NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UNoloVRControllerLibrary(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UNoloVRControllerLibrary) \
@@ -71,7 +71,7 @@ private: \
 public:
 
 
-#define TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_ENHANCED_CONSTRUCTORS \
+#define NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UNoloVRControllerLibrary(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
 private: \
@@ -84,32 +84,32 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UNoloVRControllerLibrary); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UNoloVRControllerLibrary)
 
 
-#define TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_PRIVATE_PROPERTY_OFFSET
-#define TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_23_PROLOG
-#define TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_GENERATED_BODY_LEGACY \
+#define NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_PRIVATE_PROPERTY_OFFSET
+#define NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_23_PROLOG
+#define NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_PRIVATE_PROPERTY_OFFSET \
-	TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_RPC_WRAPPERS \
-	TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_INCLASS \
-	TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_STANDARD_CONSTRUCTORS \
+	NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_PRIVATE_PROPERTY_OFFSET \
+	NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_RPC_WRAPPERS \
+	NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_INCLASS \
+	NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_GENERATED_BODY \
+#define NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_PRIVATE_PROPERTY_OFFSET \
-	TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_RPC_WRAPPERS_NO_PURE_DECLS \
-	TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_INCLASS_NO_PURE_DECLS \
-	TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_ENHANCED_CONSTRUCTORS \
+	NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_PRIVATE_PROPERTY_OFFSET \
+	NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_RPC_WRAPPERS_NO_PURE_DECLS \
+	NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_INCLASS_NO_PURE_DECLS \
+	NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h_26_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h
+#define CURRENT_FILE_ID NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVRController_Private_NoloVRControllerLibrary_h
 
 
 #define FOREACH_ENUM_ENOLOVRTOUCHDPADMAPPING(op) \

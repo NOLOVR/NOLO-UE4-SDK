@@ -18,7 +18,23 @@ enum class EMobileVR_HMDDeviceType : uint8;
 #endif
 #define NOLOVR_NOLOVRBlueprintFunctionLibrary_generated_h
 
-#define TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_RPC_WRAPPERS \
+#define NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execIsStartUpNoloHome) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(bool*)Z_Param__Result=UNOLOVRBlueprintFunctionLibrary::IsStartUpNoloHome(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execIsInstallNoloHome) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(bool*)Z_Param__Result=UNOLOVRBlueprintFunctionLibrary::IsInstallNoloHome(); \
+		P_NATIVE_END; \
+	} \
  \
 	DECLARE_FUNCTION(execReportError) \
 	{ \
@@ -96,7 +112,23 @@ enum class EMobileVR_HMDDeviceType : uint8;
 	}
 
 
-#define TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_RPC_WRAPPERS_NO_PURE_DECLS \
+#define NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execIsStartUpNoloHome) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(bool*)Z_Param__Result=UNOLOVRBlueprintFunctionLibrary::IsStartUpNoloHome(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execIsInstallNoloHome) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(bool*)Z_Param__Result=UNOLOVRBlueprintFunctionLibrary::IsInstallNoloHome(); \
+		P_NATIVE_END; \
+	} \
  \
 	DECLARE_FUNCTION(execReportError) \
 	{ \
@@ -174,7 +206,7 @@ enum class EMobileVR_HMDDeviceType : uint8;
 	}
 
 
-#define TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_INCLASS_NO_PURE_DECLS \
+#define NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUNOLOVRBlueprintFunctionLibrary(); \
 	friend NOLOVR_API class UClass* Z_Construct_UClass_UNOLOVRBlueprintFunctionLibrary(); \
@@ -184,7 +216,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_INCLASS \
+#define NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_INCLASS \
 private: \
 	static void StaticRegisterNativesUNOLOVRBlueprintFunctionLibrary(); \
 	friend NOLOVR_API class UClass* Z_Construct_UClass_UNOLOVRBlueprintFunctionLibrary(); \
@@ -194,7 +226,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_STANDARD_CONSTRUCTORS \
+#define NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UNOLOVRBlueprintFunctionLibrary(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UNOLOVRBlueprintFunctionLibrary) \
@@ -207,7 +239,7 @@ private: \
 public:
 
 
-#define TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_ENHANCED_CONSTRUCTORS \
+#define NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UNOLOVRBlueprintFunctionLibrary(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
 private: \
@@ -220,32 +252,32 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UNOLOVRBlueprintFunctionLibrary); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UNOLOVRBlueprintFunctionLibrary)
 
 
-#define TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_PRIVATE_PROPERTY_OFFSET
-#define TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_25_PROLOG
-#define TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_GENERATED_BODY_LEGACY \
+#define NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_PRIVATE_PROPERTY_OFFSET
+#define NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_25_PROLOG
+#define NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_PRIVATE_PROPERTY_OFFSET \
-	TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_RPC_WRAPPERS \
-	TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_INCLASS \
-	TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_STANDARD_CONSTRUCTORS \
+	NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_PRIVATE_PROPERTY_OFFSET \
+	NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_RPC_WRAPPERS \
+	NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_INCLASS \
+	NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_GENERATED_BODY \
+#define NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_PRIVATE_PROPERTY_OFFSET \
-	TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_RPC_WRAPPERS_NO_PURE_DECLS \
-	TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_INCLASS_NO_PURE_DECLS \
-	TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_ENHANCED_CONSTRUCTORS \
+	NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_PRIVATE_PROPERTY_OFFSET \
+	NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_RPC_WRAPPERS_NO_PURE_DECLS \
+	NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_INCLASS_NO_PURE_DECLS \
+	NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h_28_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID TEST419V2_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h
+#define CURRENT_FILE_ID NVR_Demo_Plugins_Nolo_NoloVR_Source_NoloVR_Classes_NOLOVRBlueprintFunctionLibrary_h
 
 
 #define FOREACH_ENUM_EMOBILEVR_HMDDEVICETYPE(op) \

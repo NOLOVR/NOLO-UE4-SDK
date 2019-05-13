@@ -27,6 +27,8 @@ void EmptyLinkFunctionForGeneratedCodeNOLOVRBlueprintFunctionLibrary() {}
 	NOLOVR_API UFunction* Z_Construct_UFunction_UNOLOVRBlueprintFunctionLibrary_GetRunningPlatform();
 	NOLOVR_API UFunction* Z_Construct_UFunction_UNOLOVRBlueprintFunctionLibrary_GetTrackedDevicePositionAndOrientation();
 	NOLOVR_API UFunction* Z_Construct_UFunction_UNOLOVRBlueprintFunctionLibrary_GetTrackingStatusByDeviceType();
+	NOLOVR_API UFunction* Z_Construct_UFunction_UNOLOVRBlueprintFunctionLibrary_IsInstallNoloHome();
+	NOLOVR_API UFunction* Z_Construct_UFunction_UNOLOVRBlueprintFunctionLibrary_IsStartUpNoloHome();
 	NOLOVR_API UFunction* Z_Construct_UFunction_UNOLOVRBlueprintFunctionLibrary_ReportError();
 	NOLOVR_API UFunction* Z_Construct_UFunction_UNOLOVRBlueprintFunctionLibrary_SetAppKey();
 	NOLOVR_API UFunction* Z_Construct_UFunction_UNOLOVRBlueprintFunctionLibrary_SetHmdDeviceType();
@@ -138,6 +140,8 @@ void EmptyLinkFunctionForGeneratedCodeNOLOVRBlueprintFunctionLibrary() {}
 			{ "GetRunningPlatform", &UNOLOVRBlueprintFunctionLibrary::execGetRunningPlatform },
 			{ "GetTrackedDevicePositionAndOrientation", &UNOLOVRBlueprintFunctionLibrary::execGetTrackedDevicePositionAndOrientation },
 			{ "GetTrackingStatusByDeviceType", &UNOLOVRBlueprintFunctionLibrary::execGetTrackingStatusByDeviceType },
+			{ "IsInstallNoloHome", &UNOLOVRBlueprintFunctionLibrary::execIsInstallNoloHome },
+			{ "IsStartUpNoloHome", &UNOLOVRBlueprintFunctionLibrary::execIsStartUpNoloHome },
 			{ "ReportError", &UNOLOVRBlueprintFunctionLibrary::execReportError },
 			{ "SetAppKey", &UNOLOVRBlueprintFunctionLibrary::execSetAppKey },
 			{ "SetHmdDeviceType", &UNOLOVRBlueprintFunctionLibrary::execSetHmdDeviceType },
@@ -313,6 +317,56 @@ void EmptyLinkFunctionForGeneratedCodeNOLOVRBlueprintFunctionLibrary() {}
 		}
 		return ReturnFunction;
 	}
+	UFunction* Z_Construct_UFunction_UNOLOVRBlueprintFunctionLibrary_IsInstallNoloHome()
+	{
+		struct NOLOVRBlueprintFunctionLibrary_eventIsInstallNoloHome_Parms
+		{
+			bool ReturnValue;
+		};
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			auto NewProp_ReturnValue_SetBit = [](void* Obj){ ((NOLOVRBlueprintFunctionLibrary_eventIsInstallNoloHome_Parms*)Obj)->ReturnValue = 1; };
+			static const UE4CodeGen_Private::FBoolPropertyParams NewProp_ReturnValue = { UE4CodeGen_Private::EPropertyClass::Bool, "ReturnValue", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000580, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(NOLOVRBlueprintFunctionLibrary_eventIsInstallNoloHome_Parms), &UE4CodeGen_Private::TBoolSetBitWrapper<decltype(NewProp_ReturnValue_SetBit)>::SetBit, METADATA_PARAMS(nullptr, 0) };
+			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_ReturnValue,
+			};
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "Category", "NOLO VR" },
+				{ "ModuleRelativePath", "Classes/NOLOVRBlueprintFunctionLibrary.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_UNOLOVRBlueprintFunctionLibrary, "IsInstallNoloHome", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x14022401, sizeof(NOLOVRBlueprintFunctionLibrary_eventIsInstallNoloHome_Parms), PropPointers, ARRAY_COUNT(PropPointers), 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_UNOLOVRBlueprintFunctionLibrary_IsStartUpNoloHome()
+	{
+		struct NOLOVRBlueprintFunctionLibrary_eventIsStartUpNoloHome_Parms
+		{
+			bool ReturnValue;
+		};
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			auto NewProp_ReturnValue_SetBit = [](void* Obj){ ((NOLOVRBlueprintFunctionLibrary_eventIsStartUpNoloHome_Parms*)Obj)->ReturnValue = 1; };
+			static const UE4CodeGen_Private::FBoolPropertyParams NewProp_ReturnValue = { UE4CodeGen_Private::EPropertyClass::Bool, "ReturnValue", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000580, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(NOLOVRBlueprintFunctionLibrary_eventIsStartUpNoloHome_Parms), &UE4CodeGen_Private::TBoolSetBitWrapper<decltype(NewProp_ReturnValue_SetBit)>::SetBit, METADATA_PARAMS(nullptr, 0) };
+			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_ReturnValue,
+			};
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "Category", "NOLO VR" },
+				{ "ModuleRelativePath", "Classes/NOLOVRBlueprintFunctionLibrary.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_UNOLOVRBlueprintFunctionLibrary, "IsStartUpNoloHome", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x14022401, sizeof(NOLOVRBlueprintFunctionLibrary_eventIsStartUpNoloHome_Parms), PropPointers, ARRAY_COUNT(PropPointers), 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
 	UFunction* Z_Construct_UFunction_UNOLOVRBlueprintFunctionLibrary_ReportError()
 	{
 		struct NOLOVRBlueprintFunctionLibrary_eventReportError_Parms
@@ -412,6 +466,8 @@ void EmptyLinkFunctionForGeneratedCodeNOLOVRBlueprintFunctionLibrary() {}
 				{ &Z_Construct_UFunction_UNOLOVRBlueprintFunctionLibrary_GetRunningPlatform, "GetRunningPlatform" }, // 2808791202
 				{ &Z_Construct_UFunction_UNOLOVRBlueprintFunctionLibrary_GetTrackedDevicePositionAndOrientation, "GetTrackedDevicePositionAndOrientation" }, // 507626727
 				{ &Z_Construct_UFunction_UNOLOVRBlueprintFunctionLibrary_GetTrackingStatusByDeviceType, "GetTrackingStatusByDeviceType" }, // 2963207907
+				{ &Z_Construct_UFunction_UNOLOVRBlueprintFunctionLibrary_IsInstallNoloHome, "IsInstallNoloHome" }, // 1080910940
+				{ &Z_Construct_UFunction_UNOLOVRBlueprintFunctionLibrary_IsStartUpNoloHome, "IsStartUpNoloHome" }, // 1901234583
 				{ &Z_Construct_UFunction_UNOLOVRBlueprintFunctionLibrary_ReportError, "ReportError" }, // 2201521978
 				{ &Z_Construct_UFunction_UNOLOVRBlueprintFunctionLibrary_SetAppKey, "SetAppKey" }, // 4065742144
 				{ &Z_Construct_UFunction_UNOLOVRBlueprintFunctionLibrary_SetHmdDeviceType, "SetHmdDeviceType" }, // 3633209364
@@ -440,7 +496,7 @@ void EmptyLinkFunctionForGeneratedCodeNOLOVRBlueprintFunctionLibrary() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(UNOLOVRBlueprintFunctionLibrary, 1155220156);
+	IMPLEMENT_CLASS(UNOLOVRBlueprintFunctionLibrary, 932123147);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_UNOLOVRBlueprintFunctionLibrary(Z_Construct_UClass_UNOLOVRBlueprintFunctionLibrary, &UNOLOVRBlueprintFunctionLibrary::StaticClass, TEXT("/Script/NoloVR"), TEXT("UNOLOVRBlueprintFunctionLibrary"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(UNOLOVRBlueprintFunctionLibrary);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
