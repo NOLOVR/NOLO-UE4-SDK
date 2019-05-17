@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root xmlns:android="http://schemas.android.com/apk/res/android">
+	<!-- init section is always evaluated once per architecture -->
+	<init>
+		<log text="NOLOVR init"/>
+	</init>
+
+
+ 
+
+  <!-- optional files or directories to copy to Intermediate/Android/APK -->
+	<resourceCopies>
+   <isArch arch="armeabi">
+      <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NOLOLibrary/libs/armeabi/libNoloVR.so"
+						dst="$S(BuildDir)/libs/armeabi/libNoloVR.so" /> 
+	</isArch>
+  <isArch arch="armeabi-v7a">
+      <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NOLOLibrary/libs/armeabi-v7a/libNoloVR.so"
+						dst="$S(BuildDir)/libs/armeabi-v7a/libNoloVR.so" /> 
+	</isArch>
+      <isArch arch="arm64-v8a">
+      <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NOLOLibrary/libs/arm64-v8a/libNoloVR.so"
+						dst="$S(BuildDir)/libs/arm64-v8a/libNoloVR.so" /> 
+	</isArch>
+		<isArch arch="x86">
+      <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NOLOLibrary/libs/x86/libNoloVR.so"
+						dst="$S(BuildDir)/libs/x86/libNoloVR.so" /> 
+		</isArch>
+    <isArch arch="x86_64">
+      <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NOLOLibrary/libs/x86_64/libNoloVR.so"
+						dst="$S(BuildDir)/libs/x86_64/libNoloVR.so" />
+    </isArch>
+	  <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NOLOLibrary/libs/usbhost.jar"
+					dst="$S(BuildDir)/libs/usbhost.jar" />
+    <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NOLOLibrary/libs/gson-2.8.0.jar"
+					dst="$S(BuildDir)/libs/gson-2.8.0.jar" />
+    <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NOLOLibrary/libs/okhttp-3.9.1.jar"
+      dst="$S(BuildDir)/libs/okhttp-3.9.1.jar" />
+    <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NOLOLibrary/libs/okio-1.13.0.jar"
+      dst="$S(BuildDir)/libs/okio-1.13.0.jar" />
+	</resourceCopies>
+
+
+  
+	<!-- optional updates applied to AndroidManifest.xml -->
+  <androidManifestUpdates>
+      <addPermission android:name="android.permission.INTERNET"/>
+      <addPermission android:name="android.permission.BROADCAST_STICKY"/>
+      <addPermission android:name="android.permission.PACKAGE_USAGE_STATS"/>
+      <addPermission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+      <addPermission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+      <addPermission android:name="android.permission.ACCESS_WIFI_STATE"/>
+      <addPermission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+      <addPermission android:name="android.permission.WRITE_APN_SETTINGS"/>
+      <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+      <addPermission android:name="com.android.launcher.permission.WRITE_SETTINGS"/>
+      <addPermission android:name="android.permission.ACCESS_SERVER"/>
+    <addElements tag="application">
+      <meta-data android:name="com.samsung.android.vr.application.mode" android:value="vr_only"/>
+      <meta-data android:name="distribute" android:value="normal" />
+      <meta-data android:name="com.nolovr.client.vr.appType" android:value="3D" />
+      <meta-data android:name="com.nolovr.client.vr.appData" android:value="https://appservices.nolovr.com/nolohome" />
+      <meta-data android:name="com.nolovr.client.vr.appLog" android:value="off" />
+    </addElements>
+  </androidManifestUpdates>
+
+
+  <!-- optional additions to proguard -->
+  <proguardAdditions>
+    <insert>
+      -keep class com.nolovr.** {
+      *;
+      }
+    </insert>
+  </proguardAdditions>
+  
+  <gameActivityImportAdditions>
+    <insert>
+      import com.nolovr.androidsdkclient.NoloVR;
+    </insert>
+  </gameActivityImportAdditions>
+  
+  <gameActivityClassAdditions>
+    <insert>
+    </insert> 
+  </gameActivityClassAdditions>
+  
+  <gameActivityOnPauseAdditions>
+    <insert>
+    </insert>
+  </gameActivityOnPauseAdditions>
+  
+  <gameActivityOnResumeAdditions>
+    <insert>
+    </insert>
+  </gameActivityOnResumeAdditions>
+	<gameActivityOnDestroyAdditions>
+		<insert>
+			NoloVR.getInstance(_activity).closeServer();
+		</insert>
+	</gameActivityOnDestroyAdditions>
+  <gameActivityOnCreateAdditions>
+    <insert>
+      if( NoloVR.getInstance(_activity).isStallServer()){
+         NoloVR.getInstance(_activity).openServer();
+      }
+    </insert>
+  </gameActivityOnCreateAdditions>
+
+  <gameActivityOnStartAdditions>
+    <insert>
+    </insert>
+  </gameActivityOnStartAdditions>
+  
+  <!-- optional libraries to load in GameActivity.java before libUE4.so -->
+	<soLoadLibrary>
+    <loadLibrary name="NoloVR" failmsg="NOLO library not loaded and required!" />
+	</soLoadLibrary>
+</root>
