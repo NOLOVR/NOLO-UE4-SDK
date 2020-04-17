@@ -63,6 +63,36 @@
       <meta-data android:name="com.nolovr.client.vr.appData" android:value="https://appservices.nolovr.com/nolohome" />
       <meta-data android:name="com.nolovr.client.vr.appLog" android:value="off" />
     </addElements>
+	 <!-- Add intents -->
+    <loopElements tag="activity">
+      <setStringFromAttribute result="activityName" tag="$" name="android:name" />
+      <setBoolIsEqual result="bGameActivity" arg1="$S(activityName)" arg2="com.epicgames.ue4.GameActivity" />
+      <if condition="bGameActivity">
+        <true>
+          <!-- Check for existing intent filter -->
+          <setBool result="bHasIntentFilter" value="false" />
+          <loopElements tag="intent-filter">
+            <setBool result="bHasIntentFilter" value="true" />
+          </loopElements>
+
+          <!-- If no intent filter found, add a new one -->
+          <if condition="bHasIntentFilter">
+            <false>
+              <setElement result="newIntentFilter" value="intent-filter" />
+              <addElement tag="$" name="newIntentFilter" />
+            </false>
+          </if>
+
+          <setElement result="intentInfo" value="action" />
+          <addAttribute tag="$intentInfo" name="android:name" value="android.intent.action.NOLOHOME" />
+          <addElement tag="intent-filter" name="intentInfo" />
+
+          <setElement result="intentInfo" value="category" />
+          <addAttribute tag="$intentInfo" name="android:name" value="android.intent.category.DEFAULT" />
+          <addElement tag="intent-filter" name="intentInfo" />
+        </true>
+      </if>
+    </loopElements>
   </androidManifestUpdates>
 
 
