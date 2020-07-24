@@ -10,5 +10,9 @@
 * 首先在移动平台安装Server 文件夹下的apk，再安装开发的游戏
 * NOLO-HuaWei 适配：华为旗舰手机，华为Mate 20系列，华为P20系列，华为Mate10系列，华为Mate RS 保时捷设计，荣耀Note10
 
+## NOLO-X1
+* 此UE4 SDK 进行开发适配NOLO X1 6dof移动VR游戏
+
+
 ## 联系方式
 * 有任何开发问题或者建议请发邮件联系我们：support@nolovr.com 
