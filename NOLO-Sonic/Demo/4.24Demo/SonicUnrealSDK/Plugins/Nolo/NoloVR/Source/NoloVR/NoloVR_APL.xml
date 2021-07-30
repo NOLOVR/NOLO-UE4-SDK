@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root xmlns:android="http://schemas.android.com/apk/res/android">
+	<!-- init section is always evaluated once per architecture -->
+	<init>
+		<log text="NOLOVR init"/>
+	</init>
+
+  
+  <!-- optional files or directories to copy to Intermediate/Android/APK -->
+  <resourceCopies>
+
+  <isArch arch="armeabi-v7a">
+      <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NOLOLibrary/libs/armeabi-v7a/libNoloVRClient.so"
+						dst="$S(BuildDir)/libs/armeabi-v7a/libNoloVRClient.so" />
+    <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NOLOLibrary/libs/armeabi-v7a/libdevice_suit_aar.so"
+              dst="$S(BuildDir)/libs/armeabi-v7a/libdevice_suit_aar.so" />
+    <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NOLOLibrary/libs/armeabi-v7a/libdevice_suit_client_loader.so"
+              dst="$S(BuildDir)/libs/armeabi-v7a/libdevice_suit_client_loader.so" />
+    <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NOLOLibrary/libs/armeabi-v7a/libdeviceLib_java.so"
+              dst="$S(BuildDir)/libs/armeabi-v7a/libdeviceLib_java.so" />
+  </isArch>
+  <isArch arch="arm64-v8a">
+    <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NOLOLibrary/libs/arm64-v8a/libNoloVRClient.so"
+						dst="$S(BuildDir)/libs/arm64-v8a/libNoloVRClient.so" />
+    <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NOLOLibrary/libs/arm64-v8a/libdevice_suit_aar.so"
+              dst="$S(BuildDir)/libs/arm64-v8a/libdevice_suit_aar.so" />
+    <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NOLOLibrary/libs/arm64-v8a/libdevice_suit_client_loader.so"
+              dst="$S(BuildDir)/libs/arm64-v8a/libdevice_suit_client_loader.so" />
+    <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NOLOLibrary/libs/arm64-v8a/libdeviceLib_java.so"
+              dst="$S(BuildDir)/libs/arm64-v8a/libdeviceLib_java.so" />
+  </isArch>
+		
+    <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NOLOLibrary/libs/nolo.jar"
+					dst="$S(BuildDir)/libs/nolo.jar" />
+    <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NOLOLibrary/libs/libdevicesuit.jar"
+                    dst="$S(BuildDir)/libs/libdevicesuit.jar" />
+    <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NOLOLibrary/libs/gson-2.8.0.jar"
+					dst="$S(BuildDir)/libs/gson-2.8.0.jar" />
+    <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NOLOLibrary/libs/okhttp-3.12.1.jar"
+                    dst="$S(BuildDir)/libs/okhttp-3.12.1.jar" />
+    <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NOLOLibrary/libs/okio-1.15.0.jar"
+                    dst="$S(BuildDir)/libs/okio-1.15.0.jar" />
+    <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NOLOLibrary/libs/batteryConversionLib.jar"
+                    dst="$S(BuildDir)/libs/batteryConversionLib.jar" />
+    <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NOLOLibrary/libs/assets/config.properties"
+                    dst="$S(BuildDir)/assets/config.properties" />
+    <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NOLOLibrary/libs/assets/xml/device_filter.xml"
+					dst="$S(BuildDir)/assets/xml/device_filter.xml" />
+  </resourceCopies>
+
+
+  
+	<!-- optional updates applied to AndroidManifest.xml -->
+  <androidManifestUpdates>
+    <!--
+     <addPermission android:name="android.permission.INTERNET"/>
+     <addPermission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+     <addPermission android:name="android.permission.ACCESS_WIFI_STATE"/>
+     <addPermission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    -->
+      <addPermission android:name="android.permission.BROADCAST_STICKY"/>
+      <addPermission android:name="android.permission.PACKAGE_USAGE_STATS"/>
+      <addPermission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+      <addPermission android:name="android.permission.WRITE_APN_SETTINGS"/>
+      <addPermission android:name="com.android.launcher.permission.WRITE_SETTINGS"/>
+      <addPermission android:name="android.permission.ACCESS_SERVER"/>
+    <addElements tag="application">      
+      <meta-data android:name="com.samsung.android.vr.application.mode" android:value="vr_only"/>
+      <meta-data android:name="distribute" android:value="nibiru" />
+      <meta-data android:name="com.nolovr.client.vr.appType" android:value="3D" />
+      <meta-data android:name="com.nolovr.client.vr.appData" android:value="https://appservices.nolovr.com/nolohome" />
+      <meta-data android:name="com.nolovr.client.vr.appLog" android:value="off" />
+      <meta-data android:name="com.nolovr.client.vr.dataSource" android:value="dataPush" />
+    </addElements>
+
+    <!-- Add intents -->
+    <loopElements tag="activity">
+      <setStringFromAttribute result="activityName" tag="$" name="android:name" />
+      <setBoolIsEqual result="bGameActivity" arg1="$S(activityName)" arg2="com.epicgames.ue4.GameActivity" />
+      <if condition="bGameActivity">
+        <true>
+          <!-- Check for existing intent filter -->
+          <setBool result="bHasIntentFilter" value="false" />
+          <loopElements tag="intent-filter">
+            <setBool result="bHasIntentFilter" value="true" />
+          </loopElements>
+
+          <!-- If no intent filter found, add a new one -->
+          <if condition="bHasIntentFilter">
+            <false>
+              <setElement result="newIntentFilter" value="intent-filter" />
+              <addElement tag="$" name="newIntentFilter" />
+            </false>
+          </if>
+
+          <setElement result="intentInfo" value="action" />
+          <addAttribute tag="$intentInfo" name="android:name" value="android.intent.action.NOLOHOME" />
+          <addElement tag="intent-filter" name="intentInfo" />
+
+          <setElement result="intentInfo" value="category" />
+          <addAttribute tag="$intentInfo" name="android:name" value="android.intent.category.DEFAULT" />
+          <addElement tag="intent-filter" name="intentInfo" />
+        </true>
+      </if>
+    </loopElements>
+  </androidManifestUpdates>
+
+
+  <!-- optional additions to proguard -->
+  <proguardAdditions>
+    <insert>
+      -keep class com.nolovr.** {
+      *;
+      }
+    </insert>
+  </proguardAdditions>
+  
+  <gameActivityImportAdditions>
+    <insert>
+      import com.nolovr.androidsdkclient.NoloVR;
+    </insert>
+  </gameActivityImportAdditions>
+  
+  <gameActivityClassAdditions>
+    <insert>
+      static {
+      System.loadLibrary("deviceLib_java");
+      }
+    </insert> 
+  </gameActivityClassAdditions>
+  
+  <gameActivityOnPauseAdditions>
+    <insert>
+    </insert>
+  </gameActivityOnPauseAdditions>
+  
+  <gameActivityOnResumeAdditions>
+    <insert>
+    </insert>
+  </gameActivityOnResumeAdditions>
+	<gameActivityOnDestroyAdditions>
+		<insert>
+			NoloVR.getInstance(_activity).closeServer();
+		</insert>
+	</gameActivityOnDestroyAdditions>
+  <gameActivityOnCreateAdditions>
+    <insert>
+      NoloVR.getInstance(_activity).setAppKey("4e4f4c4f484f4d457eff82725bc694a5");
+      if( NoloVR.getInstance(_activity).isStallServer()){
+      NoloVR.getInstance(_activity).openServer();
+      }
+    </insert>
+  </gameActivityOnCreateAdditions>
+
+  <gameActivityOnStartAdditions>
+    <insert>
+    </insert>
+  </gameActivityOnStartAdditions>
+  
+  <!-- optional libraries to load in GameActivity.java before libUE4.so -->
+	<soLoadLibrary>
+    <loadLibrary name="NoloVR" failmsg="NOLO library not loaded and required!" />
+	</soLoadLibrary>
+</root>

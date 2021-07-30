@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--NibiruVRHMD plugin additions-->
+<root xmlns:android="http://schemas.android.com/apk/res/android">
+	<!-- init section is always evaluated once per architecture -->
+	<init>
+		<log text="NibiruVRHMD init"/>
+    
+        <setBool result="bPackagedForNibiruVR" value="true"/>
+
+
+        <if condition="bPackagedForNibiruVR">
+            <true>
+                <log text="package for NibiruVR "/>
+            </true>
+        </if>
+ 
+	</init>
+	
+	<!-- optional files or directories to copy to Intermediate/Android/APK -->
+	<resourceCopies>
+    <log text="Copying NibiruVR runtime files to staging"/>
+
+   
+    <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NibiruVR/assets/NibiruSDKKey.bin"
+						dst="$S(BuildDir)/assets/NibiruSDKKey.bin" /> 
+
+	 <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NibiruVR/lib/nibiru_vr_sdk_latest.jar"
+					dst="$S(BuildDir)/libs/nibiruvrlib.jar" />
+    
+ 
+    <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NibiruVR/res/drawable/splashscreen_landscape.png"
+        dst="$S(BuildDir)/res/drawable/splashscreen_landscape.png" />
+
+    <copyFile src="$S(PluginDir)/../../Source/ThirdParty/NibiruVR/res/values-land/styles.xml"
+    dst="$S(BuildDir)/res/values-land/styles.xml" />
+    
+	</resourceCopies>
+	 
+
+  <!-- optional additions to proguard    -->
+  <proguardAdditions>
+    <insert>
+
+# Keep names - Native method names. Keep all native class/method names.
+-keepclasseswithmembers,allowshrinking class *,* {
+    native &lt;methods&gt;;
+}
+ 
+-keep enum com.nibiru.lib.vr.TRACKER_LOCK_STATE { *; }
+-keep enum com.nibiru.lib.vr.TRACKER { *; }
+-keep enum com.nibiru.lib.vr.TrackerMode { *; }
+
+-keep class com.qualcomm.svrapi.SvrApi{
+   native &lt;methods&gt;;
+}
+-keep class com.qualcomm.svrapi.** {*;}
+-keep class com.qualcomm.snapdragonvrservice.** {*;}
+-keep class com.sixdof.** {*;}  
+-keep class com.nibiru.lib.vr.verify.** {*;}
+-keep class com.nibiru.service.** {*;}
+-keep class com.nibiru.lib.vr.video.** {*;}
+-keep class com.nibiru.voicesdk.** {*;}
+-keep class ruiyue.gesture.sdk.** {*;}
+-keep class com.nibiru.api.** {*;}
+-keep class com.nibiru.audio360.** {*;}
+-keep class com.nibiru.interaction.** {*;}
+-keep class com.nibiru.** {*;}
+-keep class android.app.** {*;}
+    </insert>
+  </proguardAdditions>
+  
+	<!-- optional updates applied to AndroidManifest.xml -->
+  <androidManifestUpdates>
+    <if condition="bPackagedForNibiruVR">
+      <true>
+        <!-- distribution builds only install internally -->
+        <addAttribute tag="manifest" name="android:installLocation" value="internalOnly"/>
+		<!-- update the GameActivity activity -->
+		<loopElements tag="activity">
+			<setStringFromAttribute result="activityName" tag="$" name="android:name"/>
+			<setBoolIsEqual result="bGameActivity" arg1="$S(activityName)" arg2="com.epicgames.ue4.GameActivity"/>
+			<if condition="bGameActivity">
+				<true>
+							 
+					<!-- Check for existing intent filter -->
+			        <setBool result="bHasIntentFilter" value="false"/>
+			        <loopElements tag="intent-filter">
+				      <setBool result="bHasIntentFilter" value="true"/>
+			        </loopElements>
+
+			        <!-- If no intent filter found, add a new one -->
+			        <if condition="bHasIntentFilter">
+				          <false>
+                    <setBool result="bHasIntentFilter" value="true"/>
+				            <setElement result="newIntentFilter" value="intent-filter"/>
+				            <addElement tag="$" name="newIntentFilter"/>
+				          </false>
+            </if>
+
+
+              <setElement result="intentInfo" value="category"/>
+              <addAttribute tag="$intentInfo" name="android:name" value="com.nibiru.intent.category.NVR"/>
+              <addElement tag="intent-filter" name="intentInfo"/>
+
+            <setElement result="intentInfo" value="category"/>
+            <addAttribute tag="$intentInfo" name="android:name" value="com.google.intent.category.CARDBOARD"/>
+            <addElement tag="intent-filter" name="intentInfo"/>
+
+
+            </true>
+			</if>
+		</loopElements>		
+      </true>
+    </if>
+	
+	 <if condition="bPackagedForNibiruVR">
+            <true>
+                <addElements tag="application">
+                    <meta-data android:name="NibiruVRVersion" android:value="2"/>
+                </addElements>
+         
+        <addPermission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+        <addPermission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+		<addPermission android:name="android.permission.INTERNET"/>
+		<addPermission android:name="android.permission.GET_TASKS"/>
+        <addPermission android:name="android.permission.ACCESS_WIFI_STATE"/>
+        <addPermission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+        <addPermission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+        <addPermission android:name="android.permission.BLUETOOTH_ADMIN"/>
+        <addPermission android:name="android.permission.BLUETOOTH"/>
+        <!-- Add features -->
+        <addFeature android:name="android.hardware.usb.host"/>
+        <addFeature android:name="android.hardware.sensor.accelerometer" android:required="true"/>
+        <addFeature android:name="android.hardware.sensor.gyroscope" android:required="true"/>
+              
+            </true>
+        </if>
+
+    <setStringFromProperty result="strSdkKey" ini="Engine" section="/Script/NibiruHMD.NXRSDKSettings" property="SDKKeyContent" default=""/>
+    <setElement result="metaData" value="meta-data"/>
+    <addAttribute tag="$metaData" name="android:name" value="NIBIRU_SDK_KEY"/>
+    <addAttribute tag="$metaData" name="android:value" value="$S(strSdkKey)"/>
+    <addElement tag="application" name="metaData"/>
+
+    <setStringFromProperty  result="strSixDofMode" ini="Engine" section="/Script/NibiruHMD.NXRSDKSettings" property="SixDofMode" default=""/>
+    <setBoolIsEqual result="is3dof" arg1="$S(strSixDofMode)" arg2="Head_3DOF_Ctrl_3DOF"/>
+    <if condition="is3dof">
+      <false>
+        <setElement result="metaData" value="meta-data"/>
+        <addAttribute tag="$metaData" name="android:name" value="NIBIRU_PLUGIN_IDS"/>
+        <addAttribute tag="$metaData" name="android:value" value="6DOF"/>
+        <addElement tag="application" name="metaData"/>
+      </false>
+      <true>
+        <setElement result="metaData" value="meta-data"/>
+        <addAttribute tag="$metaData" name="android:name" value="NIBIRU_PLUGIN_IDS"/>
+        <addAttribute tag="$metaData" name="android:value" value=""/>
+        <addElement tag="application" name="metaData"/>
+      </true>
+    </if>
+    
+  </androidManifestUpdates>
+
+  <gameActivityImportAdditions>
+    <insert>
+      // import包相关
+      import android.view.KeyEvent;
+      import com.nibiru.lib.vr.NibiruVR;
+      import com.nibiru.lib.vr.NibiruVRService;
+      import com.nibiru.interaction.NVRInteractionManager;
+      import android.text.TextUtils;
+      import com.nibiru.api.ControllerConfig;
+      import com.nibiru.lib.vr.listener.NVRVerifyListener;
+      import com.nibiru.lib.vr.verify.NibiruPluginManager;
+    </insert>
+  </gameActivityImportAdditions>
+  
+  <gameActivityClassAdditions>
+    <insert>
+      // 函数，变量定义等
+      String[] nibVRServiceData;
+      public long AndroidThunkJava_GetNativeNVRApi()
+      {
+      return Long.valueOf(nibVRServiceData[0]);
+      }
+
+      // check the manifest to determine if we are a GearVR application
+      public boolean AndroidThunkJava_IsGearVRApplication() {
+      // true do not create window surface (in dtr)
+      boolean gearvr = AndroidThunkJava_GetNativeISDTR();
+      android.util.Log.d("ccc", "gearvr:" + gearvr);
+      return gearvr;
+      }
+      
+       // >=4.24.3
+      public boolean AndroidThunkJava_IsOculusMobileApplication() {
+      // true do not create window surface (in dtr)
+      boolean gearvr = AndroidThunkJava_GetNativeISDTR();
+      android.util.Log.d("ccc", "hack vr :" + gearvr);
+      return gearvr;
+      }
+
+      public boolean AndroidThunkJava_GetNativeIsSupportDTR() {
+      NibiruVRService nibiruVRService = NibiruVR.getNibiruVRService(_activity);
+      if (nibiruVRService != null) {
+      return nibiruVRService.isSupportDTR();
+      }
+      return false;
+      }
+
+      public boolean AndroidThunkJava_GetNativeISDTR() {
+      boolean useNvrso = Integer.valueOf(nibVRServiceData[3]) == 1;
+      if (!useNvrso)
+      return false;
+      return Integer.valueOf(nibVRServiceData[1]) == 1;
+      }
+
+      public boolean AndroidThunkJava_GetNativeISDFT() {
+      // useNvrso
+      if (Integer.valueOf(nibVRServiceData[1]) == 0)
+      // use dft
+      return true;
+      return Integer.valueOf(nibVRServiceData[3]) == 0;
+      }
+
+      public boolean AndroidThunkJava_GetNativeISDISTORTION() {
+      return Integer.valueOf(nibVRServiceData[2]) == 1;
+      }
+
+      public void AndroidThunkJava_Quit() {
+      runOnUiThread(new Runnable() {
+
+      @Override
+      public void run() {
+      finish();
+      }
+      });
+      }
+
+      //--------动态模型加载接口--------
+      public boolean AndroidThunkJava_GetIsInteractionSDKEnabled() {
+      return NVRInteractionManager.getInstance().isInteractionSDKEnabled();
+      }
+
+      public boolean AndroidThunkJava_GetIsSupportControllerModel() {
+      if(!NVRInteractionManager.getInstance().isInteractionSDKEnabled())
+      { return false; }
+      ControllerConfig mControllerConfig = NVRInteractionManager.getInstance().getControllerModelConfig(ControllerConfig.CONFIG_TYPE_UNREAL);
+      if(mControllerConfig == null) return false;
+      int version = NVRInteractionManager.getInstance().getVersionOfUnreal();
+      if(version >= 100) return true;
+      return false;
+      }
+
+      public String AndroidThunkJava_GetControllerModelPath() {
+      return NVRInteractionManager.getInstance().getControllerModelPath(ControllerConfig.CONFIG_TYPE_UNREAL);
+      }
+
+      public String AndroidThunkJava_GetControllerLeftObjPath() {
+      return NVRInteractionManager.getInstance().getControllerLeftObjPath(ControllerConfig.CONFIG_TYPE_UNREAL);
+      }
+
+      public String AndroidThunkJava_GetControllerLeftMtlPath() {
+      return NVRInteractionManager.getInstance().getControllerLeftMtlPath(ControllerConfig.CONFIG_TYPE_UNREAL);
+      }
+
+      public String AndroidThunkJava_GetControllerLeftPngPath() {
+      return NVRInteractionManager.getInstance().getControllerLeftPngPath(ControllerConfig.CONFIG_TYPE_UNREAL);
+      }
+
+      public String AndroidThunkJava_GetControllerRightObjPath() {
+      return NVRInteractionManager.getInstance().getControllerRightObjPath(ControllerConfig.CONFIG_TYPE_UNREAL);
+      }
+
+      public String AndroidThunkJava_GetControllerRightMtlPath() {
+      return NVRInteractionManager.getInstance().getControllerRightMtlPath(ControllerConfig.CONFIG_TYPE_UNREAL);
+      }
+
+      public String AndroidThunkJava_GetControllerRightPngPath() {
+      return NVRInteractionManager.getInstance().getControllerRightPngPath(ControllerConfig.CONFIG_TYPE_UNREAL);
+      }
+
+      public float[] AndroidThunkJava_GetModelPosition() {
+      return NVRInteractionManager.getInstance().getModelPosition(ControllerConfig.CONFIG_TYPE_UNREAL);
+      }
+
+      public float[] AndroidThunkJava_GetModelRotation() {
+      return NVRInteractionManager.getInstance().getModelRotation(ControllerConfig.CONFIG_TYPE_UNREAL);
+      }
+
+      public float[] AndroidThunkJava_GetModelScale() {
+      return NVRInteractionManager.getInstance().getModelScale(ControllerConfig.CONFIG_TYPE_UNREAL);
+      }
+
+      public float[] AndroidThunkJava_GetBatteryPosition() {
+      return NVRInteractionManager.getInstance().getBatteryPosition(ControllerConfig.CONFIG_TYPE_UNREAL);
+      }
+
+      public float[] AndroidThunkJava_GetBatteryRotation() {
+      return NVRInteractionManager.getInstance().getBatteryRotation(ControllerConfig.CONFIG_TYPE_UNREAL);
+      }
+
+      public float[] AndroidThunkJava_GetBatteryScale() {
+      return NVRInteractionManager.getInstance().getBatteryScale(ControllerConfig.CONFIG_TYPE_UNREAL);
+      }
+
+      public float[] AndroidThunkJava_GetRayStartPosition() {
+      return NVRInteractionManager.getInstance().getRayStartPosition(ControllerConfig.CONFIG_TYPE_UNREAL);
+      }
+
+      public float[] AndroidThunkJava_GetRayEndPosition() {
+      return NVRInteractionManager.getInstance().getRayEndPosition(ControllerConfig.CONFIG_TYPE_UNREAL);
+      }
+
+      /**
+      * 0=none,1=6dof,2=3dof
+      * @return
+      */
+      public int AndroidThunkJava_GetControllerModeType() {
+      return NVRInteractionManager.getInstance().getControllerModeType().ordinal();
+      }
+
+      /**
+      *  0=right,1=left
+      * @return
+      */
+      public int AndroidThunkJava_GetControllerHandMode() {
+      return NVRInteractionManager.getInstance().getControllerHandMode();
+      }
+
+      /**
+      *
+      * @return 1 = left, 0 = right
+      */
+      public int AndroidThunkJava_GetControllerHandMode_Get6DofControllerPrimaryHand()
+      {
+      String type = NibiruVR.getSystemProperty("nxr.ctrl.primaryhand", "3");
+      // 1 = left, 0 = right
+      if (TextUtils.isEmpty(type)) {
+      return 0;
+      }
+      try {
+      return Integer.valueOf(type);
+      } catch (Exception e) {
+      NibiruVR.logError("getSixDofControllerPrimaryDeviceType error : " + e.getLocalizedMessage());
+      }
+      return 0;
+      }
+
+      /**
+      *
+      * @param type 1 = left, 0 = right
+      */
+      public void AndroidThunkJava_SetSixDofControllerPrimaryHand(int type)
+      {
+      NibiruVR.setSystemProperty("nxr.ctrl.primaryhand", String.valueOf(type));
+      }
+      //--------动态模型加载接口--------
+
+      // 验证接口
+      public native void nativeUpdateVerifyStatus(int status);
+      NVRVerifyListener mNVRVerifyListener;
+      int cacheVerifyStatus = -1;
+      public int AndroidThunkJava_GetVerifyStatus()
+      {
+      return cacheVerifyStatus;
+      }
+
+      public void RegisterVerifyListener()
+      {
+      mNVRVerifyListener = new NVRVerifyListener() {
+      @Override
+      public void onVerifySuccess()
+      {
+      NibiruVR.logDebug("onVerifySuccess");
+      nativeUpdateVerifyStatus(0);
+      cacheVerifyStatus = 0;
+      }
+
+      @Override
+      public void onVerifyFailed(int status)
+      {
+      NibiruVR.logError("onVerifyFailed >>> " + status);
+      nativeUpdateVerifyStatus(status);
+      cacheVerifyStatus = status;
+      }
+      };
+      NibiruPluginManager.getInstance().registerVerifyListener(mNVRVerifyListener);
+      NibiruVR.logDebug("registerVerifyListener");
+      }
+
+      public void UnRegisterVerifyListener()
+      {
+      if(mNVRVerifyListener != null)
+      {
+      NibiruPluginManager.getInstance().unregisterVerifyListener(mNVRVerifyListener);
+      mNVRVerifyListener = null;
+      NibiruVR.logDebug("unregisterVerifyListener");
+      }
+      }
+      // 验证接口
+
+      public native void nativeKeyEvent(int keycode, int keyaction);
+
+      @Override
+      public boolean dispatchKeyEvent(KeyEvent event) {
+      android.util.Log.d("ccc", "dispatchKeyEvent:" + event.getKeyCode());
+      // nativeKeyEvent(event.getKeyCode(), event.getAction());
+      return super.dispatchKeyEvent(event);
+      }
+
+      private void showSplashDialog() {
+      try {
+      // try to get the splash theme (can't use R.style.UE4SplashTheme
+      // since we don't know the package name until runtime)
+      int SplashThemeId = getResources().getIdentifier("UE4SplashTheme", "style", getPackageName());
+      mSplashDialog = new Dialog(this, SplashThemeId);
+      mSplashDialog.setCancelable(false);
+      // Setting NOT_FOCUSABLE prevents the splash dialog from kicking some devices out of immersive mode.
+      mSplashDialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
+
+      if (ShouldHideUI) {
+      View decorView = mSplashDialog.getWindow().getDecorView();
+      // only do this on KitKat and above
+      if (android.os.Build.VERSION.SDK_INT >= 19) {
+      decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+      | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+      | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_FULLSCREEN
+      | View.SYSTEM_UI_FLAG_IMMERSIVE); // NOT sticky..
+      // will be set
+      // to sticky
+      // later!
+      }
+      }
+      mSplashDialog.show();
+      } catch (Exception e) {
+      e.printStackTrace();
+      }
+      try {
+      noActionAnimID = getResources().getIdentifier("noaction", "anim", getPackageName());
+      } catch (Exception e) {
+      e.printStackTrace();
+      }
+      }
+    </insert> 
+ 
+  </gameActivityClassAdditions>
+  
+  <gameActivityOnPauseAdditions>
+    <insert>
+     // onPause调用
+    NibiruVR.getNibiruVRService(_activity).onPause();
+    </insert>
+  </gameActivityOnPauseAdditions>
+  
+  <gameActivityOnResumeAdditions>
+    <insert>
+     // onResume调用
+     NibiruVR.getNibiruVRService(_activity).onResume();
+    </insert>
+  </gameActivityOnResumeAdditions>
+
+  <gameActivityOnCreateAdditions>
+    <insert>
+      // onCreate调用
+      showSplashDialog();
+      // service pointer_dft(support dtr?)_distortion_dft
+      nibVRServiceData = NibiruVR.initNibiruVRServiceForUnreal(_activity).split("_");
+      android.util.Log.d("ccc", "nibVRServiceData:" + nibVRServiceData[0] + "," + nibVRServiceData[1] + ","
+      + nibVRServiceData[2]+","+ nibVRServiceData[3]);
+      RegisterVerifyListener();
+    
+      String[] NoloPermissions = new String[] {
+          "android.permission.READ_EXTERNAL_STORAGE",
+          "android.permission.WRITE_EXTERNAL_STORAGE"
+         };
+      PermissionHelper.acquirePermissions(NoloPermissions, this);
+    </insert>
+  </gameActivityOnCreateAdditions>
+
+  <gameActivityOnStartAdditions>
+    <insert>
+    </insert>
+  </gameActivityOnStartAdditions>
+
+  <gameActivityOnDestroyAdditions>
+    <insert>
+      UnRegisterVerifyListener();
+    </insert>
+  </gameActivityOnDestroyAdditions>
+  
+  <!-- optional libraries to load in GameActivity.java before libUE4.so -->
+	<soLoadLibrary>
+    <!--loadLibrary name="nvr_v2" failmsg="NibiruVR library not loaded and required!" /> -->
+	</soLoadLibrary>
+</root>

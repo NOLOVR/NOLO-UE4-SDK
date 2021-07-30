@@ -1,0 +1,27 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "21.7.28.1",
+	"FriendlyName": "NibiruHMD",
+	"Description": "",
+	"Category": "Nibiru",
+	"CreatedBy": "Nibiru",
+	"CreatedByURL": "http://www.nolovr.com/",
+	"DocsURL": "http://www.nolovr.com/",
+	"MarketplaceURL": "http://www.nolovr.com/",
+	"SupportURL": "http://www.nolovr.com/",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "NibiruHMD",
+    		"Type": "Runtime",
+    		"LoadingPhase": "Default",
+			"WhitelistPlatforms": [
+				"Android",
+				"Win64"
+			]
+		}
+  ]
+}

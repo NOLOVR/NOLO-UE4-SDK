@@ -1,0 +1,14 @@
+.idea/
+.vs/
+Binaries/
+Intermediate/
+Saved/
+Android_ASTC/
+Build/
+enc_temp_folder/
+DerivedDataCache/
+Plugins/NibiruHMD/Binaries
+Plugins/NibiruHMD/Intermediate
+Plugins/Nolo/NoloVR/Binaries
+Plugins/Nolo/NoloVR/Intermediate
+SonicUnrealSDK.sln

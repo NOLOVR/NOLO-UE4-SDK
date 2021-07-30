@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 0x0483 / 0x5750:   -->
+    <usb-device
+        product-id="22352"
+        vendor-id="1155" />
+    <!-- 0x28e9 / 0x028a:   -->
+    <usb-device
+        product-id="0x028a"
+        vendor-id="0x28e9" />
+    <usb-device
+        product-id="896"
+        vendor-id="10473" />
+    <usb-device
+        product-id="0x0301"
+        vendor-id="0x28e9" />
+    <usb-device
+        product-id="0x0302"
+        vendor-id="0x28e9" />
+    <usb-device
+        product-id="0x0303"
+        vendor-id="0x28e9" />
+    <usb-device
+        product-id="0x0302"
+        vendor-id="0x0483" />
+</resources>
